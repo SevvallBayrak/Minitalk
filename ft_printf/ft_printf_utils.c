@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbayrak <sbayrak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sevvalbayrak <sevvalbayrak@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 12:07:16 by sbayrak           #+#    #+#             */
-/*   Updated: 2024/11/14 12:26:10 by sbayrak          ###   ########.fr       */
+/*   Updated: 2025/02/12 15:39:43 by sevvalbayra      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ int	ft_putstr(char *str)
 	int	i;
 	int	ret;
 
-	i = 0;
-	ret = 0;
 	if (!str)
 	{
 		write(1, "(null)", 6);
 		return (6);
 	}
+	i = 0;
+	ret = 0;
 	while (str[i])
 		ret += ft_putchar(str[i++]);
 	return (ret);
