@@ -18,7 +18,7 @@ void	ft_btoa(int sig)
 	static char	i = 0;
 
 	if (sig == SIGUSR1)
-		i |= (0x01 << bit);
+		i += (1 << bit);
 	bit++;
 	if (bit == 8)
 	{
@@ -29,23 +29,19 @@ void	ft_btoa(int sig)
 	}
 }
 
-void	sig_handler(int sig)
-{
-	ft_btoa(sig);
-}
-
 int	main(void)
 {
-	struct sigaction	sa;
-	int					pid;
+	int	pid;
 
 	pid = getpid();
 	ft_printf("PID: %d\n", pid);
-	sa.sa_handler = sig_handler;
-	sa.sa_flags = SA_RESTART;
-	sigaction(SIGUSR1, &sa, NULL);
-	sigaction(SIGUSR2, &sa, NULL);
+	
 	while (1)
+	{
+		signal(SIGUSR1, ft_btoa);
+		signal(SIGUSR2, ft_btoa);
 		pause();
+	}
+	
 	return (0);
 }
